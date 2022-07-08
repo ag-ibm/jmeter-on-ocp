@@ -1,5 +1,5 @@
 # Inspired from https://github.com/fgiloux/auto-perf-test/blob/master/jmeter/container/Dockerfile
-FROM registry.access.redhat.com/ubi8/openjdk-11
+FROM registry.access.redhat.com/ubi8/openjdk-17
 MAINTAINER Álvaro López<alopezme@redhat.com>
 ARG JMETER_VERSION="5.5"
 

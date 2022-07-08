@@ -1,6 +1,6 @@
 # Inspired from https://github.com/fgiloux/auto-perf-test/blob/master/jmeter/container/Dockerfile
 FROM registry.access.redhat.com/ubi8/openjdk-17
-MAINTAINER Álvaro López<alopezme@redhat.com>
+LABEL org.opencontainers.image.authors="Álvaro López<alopezme@redhat.com>"
 ARG JMETER_VERSION="5.5"
 
 LABEL jmeter.version=${JMETER_VERSION}
@@ -15,7 +15,7 @@ ENV PATH $JMETER_HOME/bin:$PATH
 RUN mkdir -p $JMETER_BASE/{tests,results}
 
 # Option 1: Download latest jmeter binaries from the Apache archive:
-RUN curl -SL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
+RUN yum install xz | curl -SL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
    | tar -xzC $JMETER_BASE \
    && rm -rf apache-jmeter-${JMETER_VERSION}.tgz
 

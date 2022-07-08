@@ -15,7 +15,8 @@ ENV PATH $JMETER_HOME/bin:$PATH
 RUN mkdir -p $JMETER_BASE/{tests,results}
 
 # Option 1: Download latest jmeter binaries from the Apache archive:
-RUN  microdnf --setopt=tsflags=nodocs install -y xz | curl -SL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
+RUN microdnf --setopt=tsflags=nodocs install -y gzip
+RUN  curl -SL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.tgz \
    | tar -xzC $JMETER_BASE \
    && rm -rf apache-jmeter-${JMETER_VERSION}.tgz
 

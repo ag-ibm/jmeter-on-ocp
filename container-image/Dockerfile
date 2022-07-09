@@ -16,10 +16,13 @@ RUN mkdir -p $JMETER_BASE/{tests,results}
 
 # Set working directory
 WORKDIR $JMETER_BASE
+RUN pwd
 # Option 1: Download latest jmeter binaries from the Apache archive:
-RUN curl -SOJL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.zip  | \
-    unzip ./apache-jmeter-${JMETER_VERSION}.zip | \
-    rm -rf ./apache-jmeter-${JMETER_VERSION}.zip
+RUN curl -SOJL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.zip 
+RUN pwd
+RUN ls -l 
+RUN unzip apache-jmeter-${JMETER_VERSION}.zip 
+RUN rm -rf apache-jmeter-${JMETER_VERSION}.zip
 
 # Option 2: If you don't have internet access from the build machine use COPY instead of curl. In this case, you will need the binaries in the same folder as this Dockerfile.
 # COPY apache-jmeter-${JMETER_VERSION}.tgz $JMETER_BASE

@@ -28,7 +28,8 @@ then
     # -p(--propfile),-e(--reportatendofloadtests),-o(--reportoutputfolder)
     export TEST_PLAN="${TEST_NAME:-example}"
     #ag added START
-    which jmeter
+    echo $PATH
+    ls -l /opt/jmeter/apache-jmeter-5.5/jmeter
     #ag added END
     jmeter \
     -n \

@@ -29,7 +29,7 @@ then
     export TEST_PLAN="${TEST_NAME:-example}"
     #ag added START
     echo $PATH
-    ls -l /opt/jmeter/apache-jmeter-5.5/jmeter
+    ls -l /opt/jmeter/apache-jmeter-5.5
     #ag added END
     jmeter \
     -n \

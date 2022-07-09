@@ -14,9 +14,11 @@ ENV PATH $JMETER_HOME/bin:$PATH
 # Create jmeter directory with tests and results folder and install JMeter
 RUN mkdir -p $JMETER_BASE/{tests,results}
 
+# Set working directory
+WORKDIR $JMETER_BASE
 # Option 1: Download latest jmeter binaries from the Apache archive:
-RUN curl -SL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.zip > ./apache-jmeter-${JMETER_VERSION}.zip | \
-    unzip -j ./apache-jmeter-${JMETER_VERSION}.zip -d $JMETER_HOME | \
+RUN curl -SOJL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JMETER_VERSION}.zip  | \
+    unzip ./apache-jmeter-${JMETER_VERSION}.zip | \
     rm -rf ./apache-jmeter-${JMETER_VERSION}.zip
 
 # Option 2: If you don't have internet access from the build machine use COPY instead of curl. In this case, you will need the binaries in the same folder as this Dockerfile.
@@ -26,9 +28,6 @@ RUN curl -SL https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-${JME
 
 ############# ARE PLUGINS NEEDED?
 # COPY binaries/JMeterPlugins-ExtrasLibs-1.4.0.zip $JMETER_BASE/apache-jmeter-${JMETER_VERSION}/
-
-# Set working directory
-WORKDIR $JMETER_BASE
 
 # Entrypoint has same signature as "jmeter" command
 COPY run.sh $JMETER_BASE/run.sh

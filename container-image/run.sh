@@ -29,13 +29,9 @@ then
     # -n(--nongui),-D(--systemproperty),-t(--testfile),-l(--logfile)
     # -p(--propfile),-e(--reportatendofloadtests),-o(--reportoutputfolder)
     export TEST_PLAN="${TEST_NAME:-example}"
-    #ag added START
-    echo $PATH
-    ls -l /opt/jmeter/apache-jmeter-5.5
-    #ag added END
     jmeter \
     -n \
-    -p "$JMETER_BASE/tests/config.properties" \
+    #-p "$JMETER_BASE/tests/config.properties" \
     -t "$JMETER_BASE/tests/${TEST_PLAN}.jmx" \
     -l "$JMETER_BASE/results/${TEST_PLAN}.jtl" \
     -e \
